@@ -11,8 +11,14 @@ import {
 } from "../utils/defaults";
 import { Transactions, userData, transactionDetails } from "../utils/types";
 
+
+interface SortedTxns {
+  [key: string]: Array<Transactions>;
+}
+
+
 function SortTxns(events: Array<Transactions>) {
-  const sortedEvents = {};
+  const sortedEvents: SortedTxns  = {};
   for (let event of events) {
     if (event.eventTime in sortedEvents) {
       sortedEvents[event.eventTime].push(event);
