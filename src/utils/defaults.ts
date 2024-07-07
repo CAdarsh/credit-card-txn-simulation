@@ -1,4 +1,7 @@
-const JSONData = {
+import { JSONDataType } from "./types";
+
+
+const JSONData: JSONDataType = {
   creditLimit: 1000,
   events: [
     {
@@ -27,6 +30,7 @@ const JSONData = {
       description: "Payment Settled",
       eventTime: 4,
       txnId: "p1",
+      amount: 0,
     },
     {
       eventType: "TXN_AUTHED",
@@ -54,6 +58,7 @@ const JSONData = {
       description: "Netflix Subscription",
       eventTime: 8,
       txnId: "t3",
+      amount: 0
     },
     {
       eventType: "PAYMENT_INITIATED",
@@ -67,6 +72,7 @@ const JSONData = {
       description: "Payment Settled",
       eventTime: 10,
       txnId: "p2",
+      amount: 0
     },
   ],
 };

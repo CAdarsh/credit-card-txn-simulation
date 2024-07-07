@@ -1,12 +1,14 @@
 interface Transactions {
   eventType?: string;
   amount: number;
-  eventTime: number;
+  eventTime?: number;
   txnId: string;
   description: string;
+  initialTime?: number;
+  finalTime?: number;
 }
 
-interface userData {
+interface userDataType {
   name: string;
   availableCredit: number;
   payableBalance: number;
@@ -20,4 +22,9 @@ interface transactionDetails {
   type: string;
 }
 
-export { Transactions, userData, transactionDetails };
+interface JSONDataType {
+  creditLimit: number;
+  events: Array<Transactions>;
+}
+
+export type { Transactions, userDataType, transactionDetails, JSONDataType };

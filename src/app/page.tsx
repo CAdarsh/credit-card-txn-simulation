@@ -9,7 +9,7 @@ import {
   userDataDefault,
   transactionDetailsDefault,
 } from "../utils/defaults";
-import { Transactions, userData, transactionDetails } from "../utils/types";
+import { Transactions, userDataType, transactionDetails } from "../utils/types";
 
 
 interface SortedTxns {
@@ -20,6 +20,7 @@ interface SortedTxns {
 function SortTxns(events: Array<Transactions>) {
   const sortedEvents: SortedTxns  = {};
   for (let event of events) {
+    if (!event.eventTime) return;
     if (event.eventTime in sortedEvents) {
       sortedEvents[event.eventTime].push(event);
     } else {
@@ -50,11 +51,11 @@ function HandleData() {
 }
 
 export default function Home() {
-  const [userData, setUserData] = useState<userData>(userDataDefault);
+  const [userData, setUserData] = useState<userDataType>(userDataDefault);
   const [details, setDetails] = useState<transactionDetails>(
     transactionDetailsDefault,
   );
-  const [events, setEvents] = useState();
+  const [events, setEvents] = useState<SortedTxns>();
   const [time, setTime] = useState(0);
 
   function updateState(property: string, value: any) {
@@ -204,10 +205,10 @@ export default function Home() {
 
   useEffect(() => {
     const [name, availableCredit, payableBalance, events] = HandleData();
-    setUserData((userData) => {
-      return { ...userData, name, availableCredit, payableBalance };
+    setUserData((userData: userDataType) => {
+      return { ...userData, name: name as string, availableCredit:  availableCredit as number, payableBalance: payableBalance as number };
     });
-    setEvents(events);
+    setEvents(events as SortedTxns)
   }, []);
 
   return (
