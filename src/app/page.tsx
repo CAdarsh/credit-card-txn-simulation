@@ -11,7 +11,7 @@ import {
 } from "../utils/defaults";
 import { Transactions, userData, transactionDetails } from "../utils/types";
 
-function SortTxns(events: List<Transactions>) {
+function SortTxns(events: Array<Transactions>) {
   const sortedEvents = {};
   for (let event of events) {
     if (event.eventTime in sortedEvents) {
@@ -59,7 +59,7 @@ export default function Home() {
     });
   }
 
-  async function handleEvent(events: List<Transactions>) {
+  async function handleEvent(events: Array<Transactions>) {
     let lock = false;
     for (const event of events) {
       while (lock) await new Promise((resolve) => setTimeout(resolve, 100)); // Wait if locked
