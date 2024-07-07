@@ -44,3 +44,7 @@ Open your browser and visit the following URL:
 http://localhost:3000
 
 I thoroughly enjoyed working on this exercise and am looking forward to your feedback. Hope to hear from you soon!
+
+#### Preview:
+
+![alt text](image-1.png)
